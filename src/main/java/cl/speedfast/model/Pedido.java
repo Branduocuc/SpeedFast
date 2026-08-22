@@ -1,41 +1,33 @@
 package cl.speedfast.model;
 
-public class Pedido {
+public abstract class Pedido {
 
 
-private int idPedido;
-private String dirrecionEntrega;
-private String tipoPedido;
+protected int idPedido;
+protected String direccionEntrega;
+protected double distanciaKm;
 
 
-public Pedido (int idPedido, String direcionEntrega , String tipoPedido)
+public Pedido (int idPedido, String direccionEntrega , double distanciaKm)
 
     {
     this.idPedido = idPedido;
-    this.dirrecionEntrega = direcionEntrega;
-    this.tipoPedido = tipoPedido;
+    this.direccionEntrega = direccionEntrega;
+    this.distanciaKm = distanciaKm;
 
     }
 
-
-    public int getIdPedido() {
-        return idPedido;
+    public void mostrarResumen() {
+        System.out.println("Pedido #" + idPedido);
+        System.out.println("Dirección: " + direccionEntrega);
+        System.out.println("Distancia: " + distanciaKm + " km");
     }
 
-    public String getDirrecionEntrega() {
-        return dirrecionEntrega;
-    }
-    public String getTipoPedido() {
-    return tipoPedido;
-    }
 
-    public void asignarRepartidor() {
-        System.out.println("Asignando repartidor...");
-    }
 
-    public void asignarRepartidor(String nombreRepartidor) {
-        System.out.println("Pedido asignado a " + nombreRepartidor);
-    }
+    public abstract int calcularTiempoEntrega();
+
+
 
 }
 

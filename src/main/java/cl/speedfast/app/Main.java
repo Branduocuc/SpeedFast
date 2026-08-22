@@ -12,35 +12,41 @@ public class Main {
         Pedido comida = new PedidoComida(
                 1,
                 "Direccion 1",
-                "Comida"
+                4
         );
 
         Pedido encomienda = new PedidoEncomienda(
                 2,
                 "Direccion 2",
-                "Encomienda"
+                6
         );
 
         Pedido express = new PedidoExpress(
                 3,
                 "Direccion 3",
-                "Express"
+                7
         );
 
         System.out.println("=== PEDIDO COMIDA ===");
-        comida.asignarRepartidor();
-        comida.asignarRepartidor("Repartidor 1");
+        comida.mostrarResumen();
+        System.out.println("Tiempo estimado de entrega: "
+                + comida.calcularTiempoEntrega() + " minutos");
+
 
         System.out.println();
 
         System.out.println("=== PEDIDO ENCOMIENDA ===");
-        encomienda.asignarRepartidor();
-        encomienda.asignarRepartidor("Repartidor 2");
+        encomienda.mostrarResumen();
+        System.out.println("Tiempo estimado de entrega: "
+                + encomienda.calcularTiempoEntrega() + " minutos");
 
         System.out.println();
 
         System.out.println("=== PEDIDO EXPRESS ===");
-        express.asignarRepartidor();
-        express.asignarRepartidor("Repartidor 3");
-    }
-}
+        express.mostrarResumen();
+        System.out.println("Tiempo estimado de entrega: "
+                + express.calcularTiempoEntrega() + " minutos");
+
+         }
+
+             }

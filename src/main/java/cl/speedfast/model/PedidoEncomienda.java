@@ -2,12 +2,14 @@ package cl.speedfast.model;
 
 public class PedidoEncomienda extends Pedido {
 
-    public PedidoEncomienda(int idPedido, String direccionEntrega, String tipoPedido) {
-        super(idPedido, direccionEntrega, tipoPedido);
+    public PedidoEncomienda(int idPedido, String direccionEntrega, double distanciaKm) {
+        super(idPedido, direccionEntrega, distanciaKm);
     }
 
+
     @Override
-    public void asignarRepartidor() {
-        System.out.println("Validando peso y embalaje...");
+    public int calcularTiempoEntrega() {
+        return (int) (20 + (1.5 * distanciaKm));
     }
+
 }
