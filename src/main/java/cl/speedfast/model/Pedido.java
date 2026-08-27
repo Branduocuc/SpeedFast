@@ -23,6 +23,13 @@ public Pedido (int idPedido, String direccionEntrega , double distanciaKm)
         System.out.println("Distancia: " + distanciaKm + " km");
     }
 
+    public void asignarRepartidor() {
+        System.out.println("Asignando repartidor...");
+    }
+
+    public void asignarRepartidor(String nombre) {
+        System.out.println("Pedido asignado a " + nombre);
+    }
 
 
     public abstract int calcularTiempoEntrega();
