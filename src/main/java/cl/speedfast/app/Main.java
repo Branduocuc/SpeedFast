@@ -4,6 +4,7 @@ import cl.speedfast.model.PedidoComida;
 import cl.speedfast.model.PedidoEncomienda;
 import cl.speedfast.model.PedidoExpress;
 import cl.speedfast.model.ControlDeEnvios;
+import cl.speedfast.model.Pedido;
 
 public class Main {
 
@@ -36,31 +37,28 @@ public class Main {
         express.asignarRepartidor();
         express.asignarRepartidor("Repartidor 3");
 
-        System.out.println();
 
-        System.out.println("=== PEDIDO COMIDA ===");
-        comida.mostrarResumen();
-        System.out.println("Tiempo estimado de entrega: "
-                + comida.calcularTiempoEntrega() + " minutos");
-        comida.despachar();
 
-        System.out.println();
+        Pedido[] pedidos = {
+                comida,
+                encomienda,
+                express
+        };
 
-        System.out.println("=== PEDIDO ENCOMIENDA ===");
-        encomienda.mostrarResumen();
-        System.out.println("Tiempo estimado de entrega: "
-                + encomienda.calcularTiempoEntrega() + " minutos");
-        encomienda.verHistorial();
+        for (Pedido pedido : pedidos) {
 
-        System.out.println();
+            pedido.mostrarResumen();
 
-        System.out.println("=== PEDIDO EXPRESS ===");
-        express.mostrarResumen();
-        System.out.println("Tiempo estimado de entrega: "
-                + express.calcularTiempoEntrega() + " minutos");
-        express.cancelar();
+            System.out.println(
+                    "Tiempo estimado de entrega: "
+                            + pedido.calcularTiempoEntrega()
+                            + " minutos"
+            );
 
-        System.out.println();
+            System.out.println();
+        }
+
+
 
         ControlDeEnvios control = new ControlDeEnvios();
 
