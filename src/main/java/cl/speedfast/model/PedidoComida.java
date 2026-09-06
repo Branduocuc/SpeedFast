@@ -24,7 +24,7 @@ public class PedidoComida extends Pedido implements Despachable {
 
     @Override
     public int calcularTiempoEntrega() {
-        return 15 + (int) (2 * distanciaKm);
+        return 15 + (int) (2 * getDistanciaKm());
     }
 
 

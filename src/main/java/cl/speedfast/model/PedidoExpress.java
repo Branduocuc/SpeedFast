@@ -23,7 +23,7 @@ public class PedidoExpress extends Pedido implements Cancelable {
 
     @Override
     public int calcularTiempoEntrega() {
-        if (distanciaKm > 5) {
+        if (getDistanciaKm() > 5) {
             return 15;
         }
 
