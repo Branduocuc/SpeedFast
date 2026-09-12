@@ -1,31 +1,17 @@
 package cl.speedfast.model;
 
-public class PedidoComida extends Pedido implements Despachable {
+public class PedidoComida extends Pedido  {
 
 
 
 
-    public PedidoComida(int idPedido, String direccionEntrega, double distanciaKm) {
-        super(idPedido, direccionEntrega, distanciaKm);
+    public PedidoComida(int idPedido, String direccionEntrega) {
+        super(idPedido, direccionEntrega);
     }
 
 
 
-    @Override
-    public void despachar() {
-        System.out.println("Pedido de comida despachado.");
-    }
 
-
-    @Override
-    public void asignarRepartidor() {
-        System.out.println("Verificando mochila térmica...");
-    }
-
-    @Override
-    public int calcularTiempoEntrega() {
-        return 15 + (int) (2 * getDistanciaKm());
-    }
 
 
 

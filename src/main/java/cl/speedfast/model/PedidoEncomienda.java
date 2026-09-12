@@ -1,28 +1,14 @@
 package cl.speedfast.model;
 
-public class PedidoEncomienda extends Pedido implements Rastreable {
+public class PedidoEncomienda extends Pedido  {
 
-    public PedidoEncomienda(int idPedido, String direccionEntrega, double distanciaKm) {
-        super(idPedido, direccionEntrega, distanciaKm);
+    public PedidoEncomienda(int idPedido, String direccionEntrega) {
+        super(idPedido, direccionEntrega);
     }
 
 
 
-    @Override
-    public void verHistorial() {
-        System.out.println("Mostrando historial de encomienda.");
-    }
 
 
-    @Override
-    public void asignarRepartidor() {
-        System.out.println("Validando peso y embalaje...");
-    }
-
-
-    @Override
-    public int calcularTiempoEntrega() {
-        return (int) Math.round(20 + (1.5 * getDistanciaKm()));
-    }
 
 }

@@ -1,53 +1,51 @@
 package cl.speedfast.model;
 
-public abstract class Pedido {
+public  class Pedido {
 
     private int idPedido;
     private String direccionEntrega;
-    private double distanciaKm;
-    private boolean reservado;
+    private EstadoPedido estado;
 
-    public Pedido(int idPedido, String direccionEntrega, double distanciaKm) {
+    public Pedido(int idPedido, String direccionEntrega) {
         this.idPedido = idPedido;
         this.direccionEntrega = direccionEntrega;
-        this.distanciaKm = distanciaKm;
-        this.reservado = false;
+
+        this.estado = EstadoPedido.PENDIENTE;
     }
 
     public int getIdPedido() {
         return idPedido;
     }
 
-    public String getDireccionEntrega() {
-        return direccionEntrega;
+
+
+    public EstadoPedido getEstado() {
+        return estado;
     }
 
-    public double getDistanciaKm() {
-        return distanciaKm;
+
+    public void setEstado(EstadoPedido estado) {
+        this.estado = estado;
+
     }
 
-    public boolean isReservado() {
-        return reservado;
+
+
+
+    @Override
+    public String toString() {
+        return "Pedido #" + idPedido
+                + " | Dirección: " + direccionEntrega
+                + " | Estado: " + estado;
     }
 
-    public void reservar() {
-        reservado = true;
-        System.out.println("Pedido #" + idPedido + " reservado.");
-    }
 
-    public void mostrarResumen() {
-        System.out.println("Pedido #" + idPedido);
-        System.out.println("Dirección: " + direccionEntrega);
-        System.out.println("Distancia: " + distanciaKm + " km");
-    }
-
-    public void asignarRepartidor() {
-        System.out.println("Asignando repartidor...");
-    }
-
-    public void asignarRepartidor(String nombre) {
-        System.out.println("Pedido asignado a " + nombre);
-    }
-
-    public abstract int calcularTiempoEntrega();
 }
+
+
+
+
+
+
+
+

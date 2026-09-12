@@ -1,50 +1,68 @@
 package cl.speedfast.model;
 
-import java.util.ArrayList;
-
 public class Repartidor implements Runnable {
 
     private String nombre;
-    private ArrayList<Pedido> pedidos;
+    private ZonaDeCarga zonaDeCarga;
 
-    public Repartidor(String nombre) {
+    public  Repartidor(String nombre, ZonaDeCarga zonaDeCarga) {
+
+
         this.nombre = nombre;
-        this.pedidos = new ArrayList<>();
+        this.zonaDeCarga = zonaDeCarga;
     }
 
-    public void agregarPedido(Pedido pedido) {
-        pedidos.add(pedido);
-    }
 
     @Override
     public void run() {
 
-        for (Pedido pedido : pedidos) {
+        while (true) {
 
-            System.out.println(
-                    "[Repartidor: " + nombre + "] Entregando pedido #"
-                            + pedido.getIdPedido() + "..."
-            );
+            Pedido pedido = zonaDeCarga.retirarPedido();
 
-            try {
-                int pausa = 1000 + (int) (Math.random() * 2000);
-                Thread.sleep(pausa);
-
-            } catch (InterruptedException e) {
-
-                Thread.currentThread().interrupt();
-
-                System.out.println(
-                        "[Repartidor: " + nombre + "] Interrumpido."
-                );
-
+            if(pedido == null) {
                 return;
+
             }
+
+            pedido.setEstado(EstadoPedido.EN_REPARTO);
+
+
+
 
             System.out.println(
                     "[Repartidor: " + nombre + "] Pedido #"
-                            + pedido.getIdPedido() + " entregado."
+                            + pedido.getIdPedido()
+                            + " | Estado: "
+                            + pedido.getEstado()
             );
+
+
+            try {
+                Thread.sleep(1500);
+            }catch (InterruptedException e){
+                Thread.currentThread().interrupt();
+                return;
+            }
+
+            pedido.setEstado(EstadoPedido.ENTREGADO);
+
+            System.out.println(
+                    "[Repartidor: " + nombre + "] Pedido #"
+                            + pedido.getIdPedido()
+                            + " | Estado: "
+                            + pedido.getEstado()
+            );
+
+
+
+            }
+
+
+
         }
+
+
     }
-}
+
+

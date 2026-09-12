@@ -1,32 +1,15 @@
 package cl.speedfast.model;
 
-public class PedidoExpress extends Pedido implements Cancelable {
+public class PedidoExpress extends Pedido {
 
-    public PedidoExpress(int idPedido, String direccionEntrega, double distanciaKm) {
-        super(idPedido, direccionEntrega, distanciaKm);
+    public PedidoExpress(int idPedido, String direccionEntrega) {
+        super(idPedido, direccionEntrega);
     }
 
-
-    @Override
-    public void cancelar() {
-        System.out.println("Pedido express cancelado.");
-    }
-
-
-
-    @Override
-    public void asignarRepartidor() {
-        System.out.println("Buscando repartidor más cercano...");
-    }
-
-
-
-    @Override
-    public int calcularTiempoEntrega() {
-        if (getDistanciaKm() > 5) {
-            return 15;
-        }
-
-        return 10;
-    }
 }
+
+
+
+
+
+
